@@ -6,5 +6,26 @@ namespace PruebasTDD
 {
     public class Funciones
     {
+        private const long VALOR_INVALIDO = -1;
+
+        public static long CalcularFactorial(int n)
+        {
+            if (n < 0)
+                return VALOR_INVALIDO;
+
+            long resultado = 1;
+            for (int i = 2; i <= n; i++)
+            {
+                resultado *= i;
+            }
+            return resultado;
+        }
+
+        public static bool EsContrasenyaValida(string contrasenya)
+        {
+            return !string.IsNullOrEmpty(contrasenya)
+            && contrasenya.Length >= 8
+            && contrasenya.Contains('#');
+        }
     }
 }

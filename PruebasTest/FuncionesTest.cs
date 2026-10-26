@@ -18,5 +18,21 @@ namespace PruebasTest
             long result = Funciones.CalcularFactorial(n);
             Assert.AreEqual(esperado, result);
         }
+
+        //////////////////////////////////////////////////////////////////////
+
+
+        [TestMethod]
+        [DataRow(null, false)] // null
+        [DataRow("", false)] // vacia
+        [DataRow("abc#123", false)] // 7 caracteres, con #
+        [DataRow("abcdefgh", false)] // 8 caracteres, sin #
+        [DataRow("abcdefg#", true)] // 8 caracteres exactos, con # (limite)
+        [DataRow("Clave#2026", true)] // valida
+        public void EsContrasenyaValida_VariosCasos(string contrasenya, bool esperado)
+        {
+            bool result = Funciones.EsContrasenyaValida(contrasenya);
+            Assert.AreEqual(esperado, result);
+        }
     }
 }
